@@ -70,7 +70,7 @@ A comprehensive FastMCP server for integrating with the RescueTime API, providin
 git clone https://github.com/ebowman/rescuetime-mcp.git
 cd rescuetime-mcp
 
-# Install in development mode
+# Install with development dependencies
 pip install -e ".[dev]"
 ```
 
@@ -198,10 +198,6 @@ Check the health of the RescueTime API connection.
 ### Setting Up Development Environment
 
 ```bash
-# Clone the repository
-git clone https://github.com/ebowman/rescuetime-mcp.git
-cd rescuetime-mcp
-
 # Create virtual environment
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\\Scripts\\activate
