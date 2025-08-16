@@ -370,7 +370,7 @@ This project is actively maintained. We aim to respond to issues and pull reques
 
 - **Latest Version**: v0.1.0
 - **Python Support**: 3.9+
-- **Status**: Production Ready ✅
+- **Status**: Beta Release
 
 ## Changelog
 
