@@ -286,20 +286,14 @@ class RescueTimeClient:
         """
         params = request.model_dump(exclude_none=True) if request else {"op": "list"}
         
-        # Handle dismiss operations via POST
+        # Handle dismiss operations - not supported by RescueTime API
         if params.get("op") == "dismiss":
-            result = await self._make_request("alerts_feed", method="POST", data=params)
-            # Handle cases where API returns no structured content for dismiss
-            if isinstance(result, dict) and "response" in result:
-                return {
-                    "status": "dismissed",
-                    "operation": "dismiss",
-                    "message": result["response"]
-                }
-            return result if result else {
-                "status": "dismissed",
-                "operation": "dismiss", 
-                "message": "Alert dismissed successfully"
+            return {
+                "status": "unsupported",
+                "operation": "dismiss",
+                "error": "Alert dismissal is not supported by the RescueTime API",
+                "message": "The RescueTime API only supports reading alerts, not dismissing them. Please use the RescueTime web interface to dismiss alerts.",
+                "api_limitation": True
             }
         else:
             return await self._make_request("alerts_feed", params=params)
