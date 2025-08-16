@@ -72,7 +72,7 @@ pip install rescuetime-mcp
 ### Install from Source
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/rescuetime-mcp.git
+git clone https://github.com/ebowman/rescuetime-mcp.git
 cd rescuetime-mcp
 
 # Install in development mode
