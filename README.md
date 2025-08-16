@@ -64,11 +64,6 @@ A comprehensive FastMCP server for integrating with the RescueTime API, providin
 - RescueTime account with API access
 - RescueTime API key
 
-### Install from PyPI (when available)
-```bash
-pip install rescuetime-mcp
-```
-
 ### Install from Source
 ```bash
 # Clone the repository
@@ -79,17 +74,6 @@ cd rescuetime-mcp
 pip install -e ".[dev]"
 ```
 
-### Using pip-tools (recommended for development)
-```bash
-# Install pip-tools
-pip install pip-tools
-
-# Install dependencies
-pip-sync requirements.txt requirements-dev.txt
-
-# Or for basic installation
-pip install -r requirements.txt
-```
 
 ## Configuration
 
