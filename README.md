@@ -325,24 +325,39 @@ All API interactions use Pydantic models for validation:
 
 ## Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes
-4. Add tests for new functionality
-5. Run the test suite (`pytest`)
-6. Run code quality checks (`black`, `isort`, `ruff`, `mypy`)
-7. Commit your changes (`git commit -m 'Add amazing feature'`)
-8. Push to the branch (`git push origin feature/amazing-feature`)
-9. Open a Pull Request
+We welcome contributions from the community! Please read our [Contributing Guidelines](CONTRIBUTING.md) for detailed information about:
 
-### Development Guidelines
+- Setting up the development environment
+- Code style and quality standards
+- Testing requirements
+- Pull request process
 
-- Follow PEP 8 style guidelines
-- Add type hints to all functions
-- Write comprehensive tests for new features
-- Update documentation for API changes
-- Use conventional commit messages
-- Ensure all tests pass before submitting PRs
+### Quick Start for Contributors
+
+1. Fork the repository on GitHub
+2. Clone your fork and set up the development environment
+3. Create a feature branch (`git checkout -b feature/amazing-feature`)
+4. Make your changes following our coding standards
+5. Add tests for new functionality
+6. Run the full test suite and quality checks
+7. Commit with conventional commit messages
+8. Push to your fork and create a Pull Request
+
+### Code Quality
+
+This project maintains high code quality standards:
+
+- **Type Safety**: Full mypy coverage
+- **Formatting**: Black and isort
+- **Linting**: Ruff for fast, comprehensive linting
+- **Testing**: Comprehensive test suite with pytest
+- **Pre-commit**: Automated quality checks
+
+### Reporting Issues
+
+- **Bugs**: Use our [bug tracking system](BUGS.md) and GitHub Issues
+- **Feature Requests**: Create a GitHub Issue with detailed use cases
+- **Security Issues**: Email ebowman@boboco.ie directly
 
 ## License
 
