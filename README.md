@@ -93,7 +93,6 @@ RESCUETIME_API_KEY=your_rescuetime_api_key_here
 1. Log in to your RescueTime account
 2. Go to https://www.rescuetime.com/anapi/manage
 3. Generate or copy your existing API key
-4. The provided default key in the code is: `B63H53rbvlcgeLqhnelKriKN8doLESZCeMTvaOQP`
 
 ## Usage
 
