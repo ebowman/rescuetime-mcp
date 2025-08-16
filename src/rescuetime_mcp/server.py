@@ -1,4 +1,10 @@
-"""FastMCP server for RescueTime API integration."""
+"""FastMCP server for RescueTime API integration.
+
+Copyright (c) 2025 Eric Bowman
+
+This software is licensed under the MIT License.
+See LICENSE file in the project root for full license text.
+"""
 
 import os
 from datetime import datetime
