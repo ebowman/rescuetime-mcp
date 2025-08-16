@@ -46,9 +46,18 @@ What actually happened, including error messages.
 
 ### Active Issues
 
-Currently, there are no known active issues. This project has been thoroughly tested with:
+🟡 **Major**: **Alert Dismissal API Limitation**
+- **Issue**: `dismiss_alert` and `get_alerts_feed` with `op=dismiss` are not supported by the RescueTime API
+- **Status**: API limitation, not a bug in our implementation
+- **Workaround**: Methods now return clear error messages directing users to the RescueTime web interface
+- **Impact**: Alert dismissal must be done manually through RescueTime's web interface
 
-- ✅ All 11 RescueTime API endpoints tested and working
+### Working Features
+
+This project has been thoroughly tested with the following confirmed working:
+
+- ✅ 9 out of 11 RescueTime API endpoints fully functional
+- ✅ Alert dismissal properly documented as API limitation with clear error messages  
 - ✅ Unit tests covering all major functionality
 - ✅ Integration tests with real API interactions
 - ✅ Error handling and edge cases covered
