@@ -307,27 +307,24 @@ class RescueTimeClient:
     async def dismiss_alert(self, alert_id: int) -> dict[str, Any]:
         """Dismiss a specific alert.
 
+        Note: Alert dismissal is not supported by the RescueTime API as of 2025.
+        This endpoint is included for completeness but will return an error
+        indicating the limitation.
+
         Args:
             alert_id: ID of the alert to dismiss
 
         Returns:
-            Response from dismiss operation
+            Response indicating API limitation
         """
-        params = {"op": "dismiss", "id": alert_id}
-        result = await self._make_request("alerts_feed", method="POST", data=params)
-        
-        # Handle cases where API returns no structured content
-        if isinstance(result, dict) and "response" in result:
-            # If we get a plain text response, wrap it in a structured format
-            return {
-                "status": "dismissed",
-                "alert_id": alert_id,
-                "message": result["response"]
-            }
-        return result if result else {
-            "status": "dismissed", 
+        # RescueTime API doesn't support alert dismissal operations
+        # Return a clear message indicating this limitation
+        return {
+            "status": "unsupported",
             "alert_id": alert_id,
-            "message": "Alert dismissed successfully"
+            "error": "Alert dismissal is not supported by the RescueTime API",
+            "message": "The RescueTime API only supports reading alerts, not dismissing them. Please use the RescueTime web interface to dismiss alerts.",
+            "api_limitation": True
         }
 
     async def get_highlights_feed(
