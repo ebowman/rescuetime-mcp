@@ -276,3 +276,49 @@ docs/build/
 
 # MCP server specific
 mcp_server.log
+
+# Security - API keys and secrets
+.env*
+!.env.example
+*.key
+*.pem
+secrets/
+.secrets/
+config/local.py
+local_config.py
+
+# Development tools and temporary files
+.DS_Store
+Thumbs.db
+*.tmp
+*.temp
+.vscode/settings.json
+.idea/workspace.xml
+.idea/tasks.xml
+
+# Development databases and caches
+*.db-journal
+*.sqlite-journal
+.cache/
+.pytest_cache/
+__pycache__/
+
+# Documentation and build artifacts
+docs/build/
+site/
+.mkdocs/
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# OS specific
+.Trash/
+.fuse_hidden*
+desktop.ini
+
+# Project specific temporary files
+test_output/
+benchmark_results/
+performance_logs/
