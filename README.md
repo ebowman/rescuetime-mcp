@@ -361,7 +361,9 @@ This project maintains high code quality standards:
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+Copyright © 2025 Eric Bowman
 
 ## Acknowledgments
 
@@ -370,18 +372,32 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Powered by [Pydantic](https://pydantic-docs.helpmanual.io/) for data validation
 - HTTP client powered by [httpx](https://www.python-httpx.org/)
 
+Special thanks to the FastMCP community and RescueTime for providing robust APIs.
+
 ## Support
 
-- **Documentation**: This README and inline code documentation
-- **Issues**: Please report bugs and feature requests through GitHub Issues
-- **Discussions**: Use GitHub Discussions for questions and community support
+### Getting Help
+
+- **📖 Documentation**: This README and inline code documentation
+- **🐛 Bug Reports**: Use [GitHub Issues](https://github.com/ebowman/rescuetime-mcp/issues) for bug reports
+- **💡 Feature Requests**: Create an issue with detailed use cases
+- **❓ Questions**: Use [GitHub Discussions](https://github.com/ebowman/rescuetime-mcp/discussions) for community support
+- **🔒 Security**: Email ebowman@boboco.ie for security-related issues
+
+### Project Status
+
+This project is actively maintained. We aim to respond to issues and pull requests promptly.
+
+- **Latest Version**: v0.1.0
+- **Python Support**: 3.9+
+- **Status**: Production Ready ✅
 
 ## Changelog
 
-### Version 0.1.0 (Initial Release)
-- Complete RescueTime API integration
-- FastMCP server implementation
-- Comprehensive test suite
-- Full documentation
-- Production-ready error handling
-- Type safety throughout
+See [CHANGELOG.md](CHANGELOG.md) for detailed version history and changes.
+
+---
+
+**Made with ❤️ by [Eric Bowman](https://github.com/ebowman)**
+
+If this project helps you, please consider giving it a ⭐ on GitHub!
