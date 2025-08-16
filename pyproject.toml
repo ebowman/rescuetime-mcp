@@ -44,9 +44,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/your-username/rescuetime-mcp"
-Repository = "https://github.com/your-username/rescuetime-mcp.git"
-Issues = "https://github.com/your-username/rescuetime-mcp/issues"
+Homepage = "https://github.com/ebowman/rescuetime-mcp"
+Repository = "https://github.com/ebowman/rescuetime-mcp.git"
+Issues = "https://github.com/ebowman/rescuetime-mcp/issues"
 
 [project.scripts]
 rescuetime-mcp = "rescuetime_mcp.server:main"
