@@ -1,0 +1,25 @@
+# Development dependencies for rescuetime-mcp
+# Install with: pip install -r requirements.txt -r requirements-dev.txt
+
+# Testing framework and plugins
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+pytest-httpx>=0.30.0
+pytest-cov>=4.0.0
+
+# Code formatting and quality
+black>=23.0.0
+isort>=5.12.0
+mypy>=1.5.0
+ruff>=0.1.0
+
+# Development workflow
+pre-commit>=3.0.0
+
+# Additional testing utilities
+responses>=0.23.0
+factory-boy>=3.2.0
+
+# Documentation (if needed in future)
+# mkdocs>=1.4.0
+# mkdocs-material>=8.0.0
