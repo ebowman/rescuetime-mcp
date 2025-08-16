@@ -67,13 +67,26 @@ This project has been thoroughly tested with the following confirmed working:
 
 ### Version 0.1.0 Release (2025-08-17)
 
-All major issues identified during development have been resolved:
+All major issues identified during development and testing have been resolved:
 
+**Development Issues:**
 - ✅ **API Key Security**: Removed hardcoded API keys from source code
 - ✅ **Error Handling**: Comprehensive error handling for all API endpoints
 - ✅ **Type Safety**: Full type coverage with mypy static analysis
 - ✅ **Documentation**: Complete documentation for all features
 - ✅ **Testing**: 100% test coverage for core functionality
+
+**Runtime Issues Identified and Fixed:**
+- ✅ **get_analytic_data Parameter Issues**: Fixed Pydantic enum serialization with `mode="json"`
+- ✅ **get_focus_session_status 404 Errors**: Fixed by using correct `focustime_started_feed` endpoint
+- ✅ **start_focus_session Parameter Validation**: Fixed by providing proper defaults (30 minutes)
+- ✅ **post_offline_time Input Validation**: Fixed `Union[int, float]` type issue by using `float`
+- ✅ **Invalid "member" Perspective**: Removed invalid enum value, only "rank" and "interval" supported
+- ✅ **Output Validation Errors**: Enhanced response handling for non-JSON API responses
+
+**API Limitations Documented:**
+- 🟡 **dismiss_alert**: Documented as RescueTime API limitation with helpful error messages
+- 🟡 **get_alerts_feed dismiss operations**: Documented as RescueTime API limitation
 
 ## Testing Status
 
