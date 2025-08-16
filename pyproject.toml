@@ -7,7 +7,7 @@ name = "rescuetime-mcp"
 version = "0.1.0"
 description = "FastMCP server for RescueTime API integration"
 authors = [
-    { name = "Eric Bowman", email = "eric@example.com" }
+    { name = "Eric Bowman", email = "ebowman@boboco.ie" }
 ]
 readme = "README.md"
 license = { text = "MIT" }
