@@ -53,10 +53,8 @@ logger = structlog.get_logger(__name__)
 def create_server() -> FastMCP:
     """Create and configure the FastMCP server."""
 
-    # Get API key from environment or use provided default
-    api_key = os.getenv(
-        "RESCUETIME_API_KEY", "B63H53rbvlcgeLqhnelKriKN8doLESZCeMTvaOQP"
-    )
+    # Get API key from environment
+    api_key = os.getenv("RESCUETIME_API_KEY")
 
     if not api_key:
         raise ValueError("RESCUETIME_API_KEY environment variable is required")
