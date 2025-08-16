@@ -322,3 +322,9 @@ desktop.ini
 test_output/
 benchmark_results/
 performance_logs/
+
+# AI and development tools
+.swarm/
+.claude-flow/
+.cursor/
+*.ai
