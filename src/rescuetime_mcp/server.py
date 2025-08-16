@@ -350,7 +350,7 @@ def create_server() -> FastMCP:
     @mcp.tool()
     async def post_offline_time(
         offline_date: str,
-        offline_hours: Union[int, float],
+        offline_hours: float,
         description: str,
     ) -> dict[str, Any]:
         """Post offline time to RescueTime.
