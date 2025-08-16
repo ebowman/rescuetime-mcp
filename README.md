@@ -1,6 +1,25 @@
 # RescueTime MCP Server
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Checked with mypy](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org/)
+
 A comprehensive FastMCP server for integrating with the RescueTime API, providing tools to access productivity data, manage focus sessions, and interact with all RescueTime features through the Model Context Protocol (MCP).
+
+## Table of Contents
+
+- [Features](#features)
+- [Supported RescueTime APIs](#supported-rescuetime-apis)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [Available MCP Tools](#available-mcp-tools)
+- [Development](#development)
+- [API Reference](#api-reference)
+- [Contributing](#contributing)
+- [License](#license)
+- [Support](#support)
 
 ## Features
 
