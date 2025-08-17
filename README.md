@@ -255,21 +255,16 @@ mypy src
 
 ```
 rescuetime-mcp/
-├── src/
-│   └── rescuetime_mcp/
-│       ├── __init__.py          # Package initialization
-│       ├── client.py            # RescueTime API client
-│       └── server.py            # FastMCP server implementation
+├── src/rescuetime_mcp/
+│   ├── __init__.py          # Package initialization
+│   ├── client.py            # RescueTime API client
+│   └── server.py            # FastMCP server implementation
 ├── tests/
-│   ├── __init__.py
-│   ├── conftest.py             # Test configuration and fixtures
-│   ├── test_client.py          # Client tests
-│   ├── test_server.py          # Server tests
-│   └── test_integration.py     # Integration and performance tests
-├── pyproject.toml              # Project configuration
-├── requirements.txt            # Production dependencies
-├── .gitignore                  # Git ignore rules
-└── README.md                   # This file
+│   ├── conftest.py          # Test configuration
+│   ├── test_client.py       # Client tests  
+│   ├── test_server.py       # Server tests
+│   └── test_integration.py  # Integration tests
+└── pyproject.toml           # Project configuration
 ```
 
 ## API Reference
