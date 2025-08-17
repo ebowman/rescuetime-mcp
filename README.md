@@ -224,11 +224,11 @@ Special thanks to the FastMCP community and RescueTime for providing robust APIs
 
 ### Getting Help
 
-- **📖 Documentation**: This README and inline code documentation
-- **🐛 Bug Reports**: Use [GitHub Issues](https://github.com/ebowman/rescuetime-mcp/issues) for bug reports
-- **💡 Feature Requests**: Create an issue with detailed use cases
-- **❓ Questions**: Use [GitHub Discussions](https://github.com/ebowman/rescuetime-mcp/discussions) for community support
-- **🔒 Security**: Email ebowman@boboco.ie for security-related issues
+- **Documentation**: This README and inline code documentation
+- **Bug Reports**: Use [GitHub Issues](https://github.com/ebowman/rescuetime-mcp/issues) 
+- **Feature Requests**: Create an issue with detailed use cases
+- **Questions**: Use [GitHub Discussions](https://github.com/ebowman/rescuetime-mcp/discussions)
+- **Security**: Email ebowman@boboco.ie for security-related issues
 
 ### Project Status
 
