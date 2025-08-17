@@ -267,42 +267,6 @@ rescuetime-mcp/
 └── pyproject.toml           # Project configuration
 ```
 
-## API Reference
-
-### RescueTime API Endpoints
-
-The server integrates with these RescueTime API endpoints:
-
-- **Analytic Data**: `https://www.rescuetime.com/anapi/data`
-- **Daily Summary**: `https://www.rescuetime.com/anapi/daily_summary_feed`
-- **Alerts Feed**: `https://www.rescuetime.com/anapi/alerts_feed`
-- **Highlights Feed**: `https://www.rescuetime.com/anapi/highlights_feed`
-- **Highlights Post**: `https://www.rescuetime.com/anapi/highlights_post`
-- **FocusTime Start**: `https://www.rescuetime.com/anapi/start_focustime`
-- **FocusTime End**: `https://www.rescuetime.com/anapi/end_focustime`
-- **FocusTime Status**: `https://www.rescuetime.com/anapi/focustime_status`
-- **Offline Time**: `https://www.rescuetime.com/anapi/offline_time_post`
-
-### Error Handling
-
-The client includes comprehensive error handling:
-
-- `RescueTimeAPIError`: Custom exception for API-specific errors
-- HTTP status code preservation
-- Request timeout handling
-- Network error management
-- Structured logging for debugging
-
-### Data Models
-
-All API interactions use Pydantic models for validation:
-
-- `AnalyticDataRequest`: Parameters for analytic data queries
-- `DailySummaryRequest`: Parameters for daily summary queries
-- `AlertsFeedRequest`: Parameters for alerts operations
-- `HighlightPost`: Model for creating highlights
-- `OfflineTimePost`: Model for logging offline time
-- `FocusSessionRequest`: Parameters for focus sessions
 
 ## Contributing
 
