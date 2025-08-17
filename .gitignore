@@ -325,6 +325,7 @@ performance_logs/
 
 # AI and development tools
 .swarm/
+.claude/
 .claude-flow/
 .cursor/
 *.ai
