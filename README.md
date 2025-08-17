@@ -14,12 +14,9 @@ A comprehensive FastMCP server for integrating with the RescueTime API, providin
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
-- [Available MCP Tools](#available-mcp-tools)
 - [Development](#development)
-- [API Reference](#api-reference)
 - [Contributing](#contributing)
 - [License](#license)
-- [Support](#support)
 
 ## Features
 
