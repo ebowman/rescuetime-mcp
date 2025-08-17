@@ -203,14 +203,12 @@ Check the health of the RescueTime API connection.
 
 ## Development
 
-### Setting Up Development Environment
-
 ```bash
-# Create virtual environment
+# Create virtual environment  
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\\Scripts\\activate
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-# Install development dependencies
+# Install with development dependencies
 pip install -e ".[dev]"
 
 # Install pre-commit hooks
