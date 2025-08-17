@@ -122,84 +122,17 @@ rescuetime-mcp --version
 
 ### Available MCP Tools
 
-The server provides the following tools that can be called through MCP:
-
-#### 1. `get_analytic_data`
-Get detailed analytics data from RescueTime.
-
-**Parameters:**
-- `perspective` (str): Data perspective - 'rank', 'interval', or 'member' (default: 'rank')
-- `resolution_time` (str): Time resolution - 'minute', 'hour', 'day', 'week', or 'month' (default: 'hour')
-- `restrict_begin` (str, optional): Start date in YYYY-MM-DD format
-- `restrict_end` (str, optional): End date in YYYY-MM-DD format
-- `restrict_kind` (str, optional): Filter by 'category', 'activity', 'productivity', 'document', or 'overview'
-- `restrict_project` (str, optional): Filter by specific project name
-- `restrict_thing` (str, optional): Filter by specific activity or category name
-
-#### 2. `get_daily_summary_feed`
-Get daily productivity summaries.
-
-**Parameters:**
-- `restrict_begin` (str, optional): Start date in YYYY-MM-DD format
-- `restrict_end` (str, optional): End date in YYYY-MM-DD format
-
-#### 3. `get_alerts_feed`
-Get productivity alerts from RescueTime.
-
-**Parameters:**
-- `op` (str): Operation - 'list' to get alerts (default: 'list')
-
-#### 4. `dismiss_alert`
-Dismiss a specific alert.
-
-**Parameters:**
-- `alert_id` (int): ID of the alert to dismiss
-
-#### 5. `get_highlights_feed`
-Get productivity highlights.
-
-**Parameters:**
-- `restrict_begin` (str, optional): Start date in YYYY-MM-DD format
-- `restrict_end` (str, optional): End date in YYYY-MM-DD format
-
-#### 6. `post_highlight`
-Create a new productivity highlight.
-
-**Parameters:**
-- `highlight_date` (str): Date for the highlight in YYYY-MM-DD format
-- `description` (str): Description of the highlight
-- `source` (str, optional): Source information
-
-#### 7. `start_focus_session`
-Start a FocusTime session.
-
-**Parameters:**
-- `duration` (int, optional): Session duration in minutes
-
-#### 8. `end_focus_session`
-End the current FocusTime session.
-
-**Parameters:** None
-
-#### 9. `get_focus_session_status`
-Get current FocusTime session status.
-
-**Parameters:** None
-
-#### 10. `post_offline_time`
-Log offline time to RescueTime.
-
-**Parameters:**
-- `offline_date` (str): Date in YYYY-MM-DD format
-- `offline_hours` (float): Number of offline hours (can be decimal)
-- `description` (str): Description of the offline time
-
-#### 11. `health_check`
-Check the health of the RescueTime API connection.
-
-**Parameters:** None
-
-**Returns:** Health status including API key validity
+- **`get_analytic_data`** - Get detailed productivity analytics with filters
+- **`get_daily_summary_feed`** - Access daily productivity summaries  
+- **`get_alerts_feed`** - Retrieve productivity alerts
+- **`dismiss_alert`** - Dismiss specific alerts
+- **`get_highlights_feed`** - View productivity highlights
+- **`post_highlight`** - Create new highlights
+- **`start_focus_session`** - Start FocusTime sessions
+- **`end_focus_session`** - End current focus session
+- **`get_focus_session_status`** - Check focus session status
+- **`post_offline_time`** - Log offline work time
+- **`health_check`** - Verify API connection
 
 ## Development
 
