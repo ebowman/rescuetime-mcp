@@ -203,39 +203,7 @@ rescuetime-mcp/
 
 ## Contributing
 
-We welcome contributions from the community! Please read our [Contributing Guidelines](CONTRIBUTING.md) for detailed information about:
-
-- Setting up the development environment
-- Code style and quality standards
-- Testing requirements
-- Pull request process
-
-### Quick Start for Contributors
-
-1. Fork the repository on GitHub
-2. Clone your fork and set up the development environment
-3. Create a feature branch (`git checkout -b feature/amazing-feature`)
-4. Make your changes following our coding standards
-5. Add tests for new functionality
-6. Run the full test suite and quality checks
-7. Commit with conventional commit messages
-8. Push to your fork and create a Pull Request
-
-### Code Quality
-
-This project maintains high code quality standards:
-
-- **Type Safety**: Full mypy coverage
-- **Formatting**: Black and isort
-- **Linting**: Ruff for fast, comprehensive linting
-- **Testing**: Comprehensive test suite with pytest
-- **Pre-commit**: Automated quality checks
-
-### Reporting Issues
-
-- **Bugs**: Use our [bug tracking system](BUGS.md) and GitHub Issues
-- **Feature Requests**: Create a GitHub Issue with detailed use cases
-- **Security Issues**: Email ebowman@boboco.ie directly
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, code standards, and contribution guidelines.
 
 ## License
 
