@@ -73,10 +73,7 @@ python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # For users - install basic package
-pip install -e .
-
-# For developers - install with development tools
-pip install -e ".[dev]"
+pip install -r requirements.txt
 ```
 
 
