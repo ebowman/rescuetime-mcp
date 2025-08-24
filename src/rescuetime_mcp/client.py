@@ -68,8 +68,22 @@ class AnalyticDataRequest(BaseModel):
     @field_validator("restrict_begin", "restrict_end", mode="before")
     @classmethod
     def validate_dates(cls, v):
+        if v is None:
+            return v
         if isinstance(v, date):
             return v.strftime("%Y-%m-%d")
+        if isinstance(v, str):
+            # Validate string format
+            import re
+            from datetime import datetime
+            date_pattern = r'^\d{4}-\d{2}-\d{2}$'
+            if not re.match(date_pattern, v):
+                raise ValueError(f"Date must be in YYYY-MM-DD format, got: '{v}'. Example: '2025-01-15'")
+            # Validate that it's a real date
+            try:
+                datetime.strptime(v, '%Y-%m-%d')
+            except ValueError:
+                raise ValueError(f"Invalid date: '{v}'. Must be a valid date in YYYY-MM-DD format. Example: '2025-01-15'")
         return v
 
 
@@ -82,15 +96,29 @@ class DailySummaryRequest(BaseModel):
     @field_validator("restrict_begin", "restrict_end", mode="before")
     @classmethod
     def validate_dates(cls, v):
+        if v is None:
+            return v
         if isinstance(v, date):
             return v.strftime("%Y-%m-%d")
+        if isinstance(v, str):
+            # Validate string format
+            import re
+            from datetime import datetime
+            date_pattern = r'^\d{4}-\d{2}-\d{2}$'
+            if not re.match(date_pattern, v):
+                raise ValueError(f"Date must be in YYYY-MM-DD format, got: '{v}'. Example: '2025-01-15'")
+            # Validate that it's a real date
+            try:
+                datetime.strptime(v, '%Y-%m-%d')
+            except ValueError:
+                raise ValueError(f"Invalid date: '{v}'. Must be a valid date in YYYY-MM-DD format. Example: '2025-01-15'")
         return v
 
 
 class AlertsFeedRequest(BaseModel):
     """Request model for alerts feed API."""
 
-    op: str = "list"  # list or dismiss
+    op: str = "list"
 
 
 class HighlightPost(BaseModel):
@@ -100,11 +128,32 @@ class HighlightPost(BaseModel):
     description: str
     source: Optional[str] = None
 
+    @field_validator("description", mode="before")
+    @classmethod
+    def validate_description(cls, v):
+        if not v or (isinstance(v, str) and not v.strip()):
+            raise ValueError("description is required and cannot be empty")
+        return v
+
     @field_validator("highlight_date", mode="before")
     @classmethod
     def validate_date(cls, v):
+        if v is None:
+            raise ValueError("highlight_date is required and cannot be None")
         if isinstance(v, date):
             return v.strftime("%Y-%m-%d")
+        if isinstance(v, str):
+            # Validate string format
+            import re
+            from datetime import datetime
+            date_pattern = r'^\d{4}-\d{2}-\d{2}$'
+            if not re.match(date_pattern, v):
+                raise ValueError(f"highlight_date must be in YYYY-MM-DD format, got: '{v}'. Example: '2025-01-15'")
+            # Validate that it's a real date
+            try:
+                datetime.strptime(v, '%Y-%m-%d')
+            except ValueError:
+                raise ValueError(f"Invalid highlight_date: '{v}'. Must be a valid date in YYYY-MM-DD format. Example: '2025-01-15'")
         return v
 
 
@@ -115,11 +164,49 @@ class OfflineTimePost(BaseModel):
     offline_hours: Union[int, float]
     description: str
 
+    @field_validator("offline_hours", mode="before")
+    @classmethod
+    def validate_hours(cls, v):
+        if v is None:
+            raise ValueError("offline_hours is required and cannot be None")
+        try:
+            hours = float(v)
+            if hours <= 0:
+                raise ValueError(f"offline_hours must be positive, got: {hours}. Example: 2.5 for 2.5 hours")
+            if hours > 24:
+                raise ValueError(f"offline_hours cannot exceed 24 hours per day, got: {hours}")
+            return hours
+        except (ValueError, TypeError) as e:
+            if "could not convert" in str(e).lower() or "invalid literal" in str(e).lower():
+                raise ValueError(f"offline_hours must be a valid number, got: '{v}'. Examples: 2.5 for 2.5 hours, 8 for 8 hours")
+            raise
+
+    @field_validator("description", mode="before")
+    @classmethod
+    def validate_description(cls, v):
+        if not v or (isinstance(v, str) and not v.strip()):
+            raise ValueError("description is required and cannot be empty")
+        return v
+
     @field_validator("offline_date", mode="before")
     @classmethod
     def validate_date(cls, v):
+        if v is None:
+            raise ValueError("offline_date is required and cannot be None")
         if isinstance(v, date):
             return v.strftime("%Y-%m-%d")
+        if isinstance(v, str):
+            # Validate string format
+            import re
+            from datetime import datetime
+            date_pattern = r'^\d{4}-\d{2}-\d{2}$'
+            if not re.match(date_pattern, v):
+                raise ValueError(f"offline_date must be in YYYY-MM-DD format, got: '{v}'. Example: '2025-01-15'")
+            # Validate that it's a real date
+            try:
+                datetime.strptime(v, '%Y-%m-%d')
+            except ValueError:
+                raise ValueError(f"Invalid offline_date: '{v}'. Must be a valid date in YYYY-MM-DD format. Example: '2025-01-15'")
         return v
 
 
@@ -127,6 +214,25 @@ class FocusSessionRequest(BaseModel):
     """Model for focus session requests."""
 
     duration: Optional[int] = None  # in minutes, for starting sessions
+
+    @field_validator("duration", mode="before")
+    @classmethod
+    def validate_duration(cls, v):
+        if v is None:
+            return v
+        try:
+            duration = int(v)
+            if duration == -1:
+                return duration  # -1 is valid for end-of-day sessions
+            if duration <= 0:
+                raise ValueError(f"duration must be positive or -1 for end-of-day, got: {duration}")
+            if duration % 5 != 0:
+                raise ValueError(f"duration must be a multiple of 5 minutes or -1 for end-of-day, got: {duration}. Common values: 30, 60, 90, 120 minutes")
+            return duration
+        except (ValueError, TypeError) as e:
+            if "invalid literal" in str(e).lower():
+                raise ValueError(f"duration must be a valid integer, got: '{v}'. Examples: 30 for 30 minutes, -1 for end of day")
+            raise
 
 
 class RescueTimeAPIError(Exception):
@@ -232,17 +338,45 @@ class RescueTimeClient:
                 return {"response": response.text, "content_type": content_type}
 
         except httpx.HTTPStatusError as e:
-            error_msg = f"HTTP {e.response.status_code} error: {e.response.text}"
+            status_code = e.response.status_code
+            response_text = e.response.text
+            
+            # Create detailed error messages based on status code
+            if status_code == 400:
+                error_msg = f"HTTP 400 Bad Request: Invalid parameters sent to RescueTime API. Common causes: invalid date format (use YYYY-MM-DD), invalid enum values, or missing required parameters. Response: {response_text}"
+            elif status_code == 401:
+                error_msg = f"HTTP 401 Unauthorized: Invalid or missing API key. Please check your RESCUETIME_API_KEY environment variable. You can find your API key at https://www.rescuetime.com/anapi/manage. Response: {response_text}"
+            elif status_code == 403:
+                error_msg = f"HTTP 403 Forbidden: API key lacks necessary permissions or feature requires premium account. Some features like FocusTime require a premium RescueTime subscription. Response: {response_text}"
+            elif status_code == 404:
+                error_msg = f"HTTP 404 Not Found: API endpoint not found or no data available for the requested parameters. This may indicate the endpoint is not available for your account type. Response: {response_text}"
+            elif status_code == 429:
+                error_msg = f"HTTP 429 Too Many Requests: Rate limit exceeded. Please wait a moment before making another request. RescueTime API has rate limits to prevent abuse. Response: {response_text}"
+            elif status_code >= 500:
+                error_msg = f"HTTP {status_code} Server Error: RescueTime API is experiencing server issues. Please try again later. If the problem persists, check RescueTime's status page. Response: {response_text}"
+            else:
+                error_msg = f"HTTP {status_code} error: {response_text}"
+            
             logger.error(
                 "RescueTime API error",
                 error=error_msg,
-                status_code=e.response.status_code,
+                status_code=status_code,
             )
             raise RescueTimeAPIError(
-                error_msg, e.response.status_code, {"response": e.response.text}
+                error_msg, status_code, {"response": response_text}
             )
         except httpx.RequestError as e:
-            error_msg = f"Request error: {str(e)}"
+            # Enhance error message based on the type of request error
+            error_str = str(e)
+            if "timeout" in error_str.lower():
+                error_msg = f"Request timeout: The RescueTime API did not respond within {self.timeout} seconds. This may indicate network issues or high API load. Please check your internet connection and try again. Error details: {error_str}"
+            elif "connection" in error_str.lower() or "unreachable" in error_str.lower():
+                error_msg = f"Connection error: Unable to connect to RescueTime API. Please check your internet connection and verify that www.rescuetime.com is accessible. Error details: {error_str}"
+            elif "ssl" in error_str.lower() or "certificate" in error_str.lower():
+                error_msg = f"SSL/Certificate error: There was an issue with the secure connection to RescueTime API. This may be due to network security settings or certificate issues. Error details: {error_str}"
+            else:
+                error_msg = f"Network request error: {error_str}. Please check your internet connection and try again."
+            
             logger.error("RescueTime request error", error=error_msg)
             raise RescueTimeAPIError(error_msg)
 
@@ -285,41 +419,8 @@ class RescueTimeClient:
             Alerts feed response
         """
         params = request.model_dump(exclude_none=True) if request else {"op": "list"}
-        
-        # Handle dismiss operations - not supported by RescueTime API
-        if params.get("op") == "dismiss":
-            return {
-                "status": "unsupported",
-                "operation": "dismiss",
-                "error": "Alert dismissal is not supported by the RescueTime API",
-                "message": "The RescueTime API only supports reading alerts, not dismissing them. Please use the RescueTime web interface to dismiss alerts.",
-                "api_limitation": True
-            }
-        else:
-            return await self._make_request("alerts_feed", params=params)
+        return await self._make_request("alerts_feed", params=params)
 
-    async def dismiss_alert(self, alert_id: int) -> dict[str, Any]:
-        """Dismiss a specific alert.
-
-        Note: Alert dismissal is not supported by the RescueTime API as of 2025.
-        This endpoint is included for completeness but will return an error
-        indicating the limitation.
-
-        Args:
-            alert_id: ID of the alert to dismiss
-
-        Returns:
-            Response indicating API limitation
-        """
-        # RescueTime API doesn't support alert dismissal operations
-        # Return a clear message indicating this limitation
-        return {
-            "status": "unsupported",
-            "alert_id": alert_id,
-            "error": "Alert dismissal is not supported by the RescueTime API",
-            "message": "The RescueTime API only supports reading alerts, not dismissing them. Please use the RescueTime web interface to dismiss alerts.",
-            "api_limitation": True
-        }
 
     async def get_highlights_feed(
         self,
@@ -437,7 +538,15 @@ class RescueTimeClient:
         Returns:
             Response from post operation
         """
-        data = offline_time.model_dump(exclude_none=True)
+        # Map our model fields to the API's expected parameter names
+        # Convert hours to minutes for the duration parameter
+        duration_minutes = int(offline_time.offline_hours * 60)
+        
+        data = {
+            "start_time": offline_time.offline_date,
+            "activity_name": offline_time.description,
+            "duration": duration_minutes
+        }
         return await self._make_request("offline_time_post", method="POST", data=data)
 
     async def health_check(self) -> bool:

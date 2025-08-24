@@ -103,13 +103,19 @@ If Claude can access your RescueTime data, you're all set!
 
 Once configured, you can ask Claude to:
 
+### Core Functions
 - **Get productivity data**: "Show me my RescueTime data for the last week"
-- **Daily summaries**: "What's my productivity score today?"
+- **Daily summaries**: "Get my daily productivity summary" (Note: Has ~24 hour delay, returns previous days only)
 - **Manage alerts**: "Show me my RescueTime alerts"
 - **Create highlights**: "Add a highlight for completing the project presentation"
 - **Focus sessions**: "Start a 45-minute focus session" or "End my focus session"
 - **Log offline time**: "Log 2 hours of offline coding work"
 - **Check status**: "Is my focus session still active?"
+
+### Convenience Functions
+- **Today's productivity score**: "What's my productivity score today?" (Real-time data)
+- **Top distractions**: "Show me my top distracting activities today"
+- **Latest daily summary**: "Get the most recent daily summary" (Usually yesterday's data)
 
 ## Features
 

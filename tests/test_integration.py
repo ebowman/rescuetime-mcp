@@ -160,7 +160,6 @@ class TestMCPServerIntegration:
             "get_analytic_data",
             "get_daily_summary_feed",
             "get_alerts_feed",
-            "dismiss_alert",
             "get_highlights_feed",
             "post_highlight",
             "start_focus_session",

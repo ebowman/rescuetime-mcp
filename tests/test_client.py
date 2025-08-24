@@ -172,20 +172,6 @@ class TestRescueTimeClient:
             assert result == sample_alerts
             mock_request.assert_called_once_with("alerts_feed", params={"op": "list"})
 
-    @pytest.mark.asyncio
-    async def test_dismiss_alert(self, client):
-        """Test dismissing an alert."""
-        with patch.object(
-            client, "_make_request", new_callable=AsyncMock
-        ) as mock_request:
-            mock_request.return_value = {"status": "dismissed"}
-
-            result = await client.dismiss_alert(123)
-
-            assert result == {"status": "dismissed"}
-            mock_request.assert_called_once_with(
-                "alerts_feed", params={"op": "dismiss", "id": 123}
-            )
 
     @pytest.mark.asyncio
     async def test_get_highlights_feed(self, client, sample_highlights):
@@ -282,7 +268,7 @@ class TestRescueTimeClient:
 
             assert result == {"status": "started"}
             mock_request.assert_called_once_with(
-                "start_focustime", method="POST", data={}
+                "start_focustime", method="POST", data={"duration": 30}
             )
 
     @pytest.mark.asyncio
@@ -330,9 +316,9 @@ class TestRescueTimeClient:
                 "offline_time_post",
                 method="POST",
                 data={
-                    "offline_date": "2024-01-15",
-                    "offline_hours": 4.5,
-                    "description": "Offline work",
+                    "start_time": "2024-01-15",
+                    "activity_name": "Offline work",
+                    "duration": 270,
                 },
             )
 

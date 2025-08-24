@@ -53,7 +53,6 @@ class TestMCPTools:
         mock_client.get_analytic_data = AsyncMock()
         mock_client.get_daily_summary_feed = AsyncMock()
         mock_client.get_alerts_feed = AsyncMock()
-        mock_client.dismiss_alert = AsyncMock()
         mock_client.get_highlights_feed = AsyncMock()
         mock_client.post_highlight = AsyncMock()
         mock_client.start_focus_session = AsyncMock()
@@ -159,20 +158,6 @@ class TestMCPTools:
         assert result == sample_alerts
         mock_client.get_alerts_feed.assert_called_once()
 
-    @pytest.mark.asyncio
-    async def test_dismiss_alert_tool(self, server_with_mock_client):
-        """Test dismiss_alert tool."""
-        server, mock_client = server_with_mock_client
-        mock_client.dismiss_alert.return_value = {"status": "dismissed"}
-
-        tools = {tool.name: tool for tool in server.get_tools()}
-        dismiss_alert_tool = tools["dismiss_alert"]
-
-        with patch("rescuetime_mcp.client.RescueTimeClient", return_value=mock_client):
-            result = await dismiss_alert_tool.handler(alert_id=123)
-
-        assert result == {"status": "dismissed"}
-        mock_client.dismiss_alert.assert_called_once_with(123)
 
     @pytest.mark.asyncio
     async def test_get_highlights_feed_tool(

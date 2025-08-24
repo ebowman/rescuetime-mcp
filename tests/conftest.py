@@ -36,7 +36,6 @@ def mock_client(mock_api_key):
     client.get_analytic_data = AsyncMock()
     client.get_daily_summary_feed = AsyncMock()
     client.get_alerts_feed = AsyncMock()
-    client.dismiss_alert = AsyncMock()
     client.get_highlights_feed = AsyncMock()
     client.post_highlight = AsyncMock()
     client.start_focus_session = AsyncMock()
@@ -101,14 +100,12 @@ def sample_alerts():
             "created_at": "2024-01-15T10:00:00Z",
             "type": "daily_goal",
             "message": "You've reached your daily productivity goal!",
-            "is_dismissed": False,
         },
         {
             "id": 2,
             "created_at": "2024-01-15T14:30:00Z",
             "type": "distraction_alert",
             "message": "You've spent 30 minutes on distracting activities",
-            "is_dismissed": True,
         },
     ]
 
