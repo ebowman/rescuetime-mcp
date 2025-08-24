@@ -78,9 +78,84 @@ pip install -r requirements.txt
 
 ## Configuration
 
+### Getting Your RescueTime API Key
+
+1. Log in to your RescueTime account
+2. Go to https://www.rescuetime.com/anapi/manage
+3. Generate or copy your existing API key
+
+### Configuring for Claude Desktop
+
+To use this MCP server with Claude Desktop, you need to add it to your Claude Desktop configuration:
+
+#### 1. Build and Install the Package (Optional)
+
+If you're using a virtual environment (recommended):
+
+```bash
+# From the project root directory
+# Activate your virtual environment first
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install the package in editable mode
+pip install -e .
+```
+
+This will install the package in editable mode within your virtual environment.
+
+#### 2. Configure Claude Desktop
+
+Add the server to your Claude Desktop configuration file:
+
+**On macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+**On Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+
+Add the following to the `mcpServers` section:
+
+**Option 1: Using a virtual environment (recommended):**
+
+```json
+{
+  "mcpServers": {
+    "rescuetime": {
+      "command": "/path/to/rescuetime-mcp/venv/bin/python",
+      "args": ["-m", "rescuetime_mcp.server"],
+      "env": {
+        "RESCUETIME_API_KEY": "your_rescuetime_api_key_here"
+      }
+    }
+  }
+}
+```
+
+**Option 2: Using the system Python with PYTHONPATH:**
+
+```json
+{
+  "mcpServers": {
+    "rescuetime": {
+      "command": "python",
+      "args": ["-m", "rescuetime_mcp.server"],
+      "env": {
+        "RESCUETIME_API_KEY": "your_rescuetime_api_key_here",
+        "PYTHONPATH": "/path/to/rescuetime-mcp/src"
+      }
+    }
+  }
+}
+```
+
+#### 3. Restart Claude Desktop
+
+After updating the configuration, restart Claude Desktop to load the new MCP server.
+
+#### 4. Verify the Connection
+
+In Claude Desktop, you should now be able to use RescueTime tools. Try asking Claude to check your RescueTime productivity data or start a focus session.
+
 ### Environment Variables
 
-Set your RescueTime API key as an environment variable:
+For development or standalone usage, you can set your RescueTime API key as an environment variable:
 
 ```bash
 export RESCUETIME_API_KEY="your_rescuetime_api_key_here"
@@ -91,12 +166,6 @@ Alternatively, create a `.env` file in the project root:
 ```env
 RESCUETIME_API_KEY=your_rescuetime_api_key_here
 ```
-
-### Getting Your API Key
-
-1. Log in to your RescueTime account
-2. Go to https://www.rescuetime.com/anapi/manage
-3. Generate or copy your existing API key
 
 ## Usage
 
