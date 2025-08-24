@@ -14,7 +14,6 @@ A comprehensive FastMCP server for integrating with the RescueTime API, providin
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
-- [Development](#development)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -127,20 +126,6 @@ rescuetime-mcp --version
 - **`get_focus_session_status`** - Check focus session status
 - **`post_offline_time`** - Log offline work time
 - **`health_check`** - Verify API connection
-
-## Development
-
-```bash
-# Create virtual environment  
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install with development dependencies
-pip install -e ".[dev]"
-
-# Install pre-commit hooks
-pre-commit install
-```
 
 ### Running Tests
 
