@@ -201,7 +201,7 @@ def create_server() -> FastMCP:
         """Dismiss a specific alert in RescueTime.
 
         Args:
-            alert_id: ID of the alert to dismiss
+            alert_id: integer - ID of the alert to dismiss
 
         Returns:
             Dictionary containing dismiss operation result
@@ -291,17 +291,32 @@ def create_server() -> FastMCP:
             raise RuntimeError(f"Failed to post highlight: {str(e)}")
 
     @mcp.tool()
-    async def start_focus_session(duration: Optional[int] = None) -> dict[str, Any]:
+    async def start_focus_session(duration: Union[int, str, None] = None) -> dict[str, Any]:
         """Start a FocusTime session in RescueTime.
 
         Args:
-            duration: Optional session duration in minutes
+            duration: integer (minutes) - Session duration in minutes. Must be multiple of 5, or -1 for end of day. Default: 30
 
         Returns:
             Dictionary containing session start result
         """
         try:
             client = await get_client()
+            
+            # Convert duration to int if it's passed as a string
+            if duration is not None:
+                if isinstance(duration, str):
+                    try:
+                        duration = int(duration)
+                    except ValueError:
+                        raise ValueError(f"Duration must be a valid integer, got: {duration}")
+                
+                # Validate duration constraints
+                if duration != -1 and duration % 5 != 0:
+                    raise ValueError(f"Duration must be a multiple of 5 minutes or -1 for end of day, got: {duration}")
+                
+                if duration < -1 or duration == 0:
+                    raise ValueError(f"Duration must be positive, -1 for end of day, or not specified for default (30), got: {duration}")
 
             result = await client.start_focus_session(duration)
             logger.info("Started focus session", duration=duration)
